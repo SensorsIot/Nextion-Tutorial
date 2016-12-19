@@ -49,9 +49,9 @@ NexTouch *nex_listen_list[] =
    Button0 component pop callback function.
    In this example,the value of the text component will plus one every time when button0 is released.
 */
-void buttonPlusPopCallback(void *ptr)
+void buttonPlusPushCallback(void *ptr)
 {
-  dbSerialPrintln("buttonPlusPopCallback");
+  dbSerialPrintln("buttonPlusPushCallback");
 
   if (number < 100) number += 1;
 
@@ -82,8 +82,10 @@ void setup(void)
   
   Serial.begin(115200);
 
+  Serial.println("Start");
+
   /* Register the pop event callback function of the current button0 component. */
-  buttonPlus.attachPop(buttonPlusPopCallback);
+  buttonPlus.attachPush(buttonPlusPushCallback);
 
   /* Register the pop event callback function of the current button1 component. */
   buttonMinus.attachPush(buttonMinusPushCallback);
